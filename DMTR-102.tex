@@ -16,7 +16,9 @@
 \setDocRef{\lsstDocType-\lsstDocNum}
 \setDocDate{\vcsdate}
 \setDocUpstreamLocation{\url{https://github.com/lsst/lsst-texmf/examples}}
-\author{Michelle Butler}
+\author{% `git log --pretty=%an | sort --key=2 | uniq` ?
+  Michelle Butler
+}
 
 % Most recent last
 \setDocChangeRecord{
@@ -34,9 +36,96 @@ This is the test report for \milestoneId{} (\milestoneName{}), an LSST DM level 
 
 \maketitle
 
+\section{Introduction}
+\label{sect:intro}
+
+\subsection{Objectives}
+\label{sect:objectives}
+
+Testing for the raw image from the DAQ to being written to the archive service at the LDF
+
+\subsection{System Overview}
+\label{sect:systemoverview}
+
+The system being tested is the data being stored into the archive environment at the LDF from various sources.  It will depend on what DAQ system (spectragraph, comcam, lsstcam... others) as to where the data is located.    The tests begin with data somewhere that needs to be stored at the archive enviornment at LDF.
+
+\subsection{Applicable Documents}
+\label{sect:appdocs}
+\addtocounter{table}{-1}
+
+\begin{tabular}[htb]{l l}
+\citeds{LDM-294} & LSST DM Project Management Plan\\
+\citeds{LDM-503} & DM Test Plan\\
+\citeds{LDM-538} & DM Raw Image Archiving Service Test Specification \\
+\end{tabular}
+
+\subsection{References}
+\label{sect:references}
+
+\renewcommand{\refname}{}
+\bibliography{lsst,refs,books,refs_ads}
+
+\subsection{Document Overview}
+\label{sect:docoverview}
+
+Section \ref{sect:configuration} of this document provides details of the \product{} baseline used for this test, including relevant hardware and software configurations.
+Section \ref{sect:personnel} lists the individuals involved in performing the tests.
+Section \ref{sect:overview} provides an overview of the test results, while Section \ref{sect:detailed} provides more detailed results from each individual test case.
+
+\section{Test Configuration}
+\label{sect:configuration}
+
+\subsection{Documents}
+
+This test plan and report refers to the execution of test activity described in the section \ref{sect:objectives} and documented in the \citeds{LDM-538} test specification issue 2.0.
+
+\subsection{Hardware}
+\label{sect:hwconf}
+
+LDF center at NCSA.   The archive service or data back bone.
+
+\subsection{Software}
+\label{sect:swconf}
+
+\section{Personnel}
+\label{sect:personnel}
+
+\begin{itemize}
+\item Test Plan (LVV-P10) Owner: Michelle Butler
+\item Test Cycle (LVV-C8) Owner: Unassigned
+\item LVV-T284 Tester: Michelle Butler
+\item Additional Test Personel involved: None 
+\end{itemize}
 
 \newpage
-\appendix
+
+\section{Overview of the Test Results}
+\label{sect:overview}
+
+\subsection{Summary Table}
+\label{sect:summarytable}
+
+
+\begin{longtable} {|p{0.2\textwidth}|p{0.2\textwidth}|p{0.6\textwidth}|}
+\hline
+{\bf TEST CASE ID} & {\bf PASS/FAIL} & {\bf COMMENTS} \\\hline
+LVV-T284 & Not Run & \\\hline
+\end{longtable}
+
+\subsection{Overall Assessment}
+\label{sect:overallassessment}
+
+
+\subsection{Recommended Improvements}
+\label{sect:recommendations}
+
+
+
+
+\newpage
+
+\section{Detailed Test Results}
+\label{sect:detailed}
 
 
 \end{document}
