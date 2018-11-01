@@ -112,11 +112,7 @@ while \ref{sect:detailedtestresults} provides more detailed results from each in
 \section{Test Configuration}
 \label{sect:configuration}
 
-\subsection{Documents}
-
-{\it
-This test plan and report refers to the execution of test activity described in the section \ref{sect:objectives} and documented in the \citeds{LDM-538} test specification issue 2.0.
-}
+The configuration for this test is the data is located in a file system somewhere.  It is transferred to NCSA into a the LSST GPFS file system.   Files that are needed in the DBB are moved to the DBB ingest file system.   the data backbone gathers the info from the headers and file name.  it inserts rows into the DBB consolidated DB environment and moves the file to the DBB file systems that are used by the LSP to once again find the raw image file to be viewed/displayed for further analysis.  
 
 \subsection{Hardware}
 \label{sect:hwconf}
@@ -125,6 +121,8 @@ LDF center at NCSA.   The archive service or data back bone.
 
 \subsection{Software}
 \label{sect:swconf}
+
+The DBB version is 1.0, and can be found in the github repository when it has been fully developed.   The current DBB is a script for scraping data from the header file and getting the file name and the metadata required along with providence.   At the time of this writing, the DBB use cases and requirements are just being written.    The database component is Oracle and the ingest file systems and output file systems for DBB are in GPFS at the LDF.  
 
 \subsection{Entry Criteria}
 
