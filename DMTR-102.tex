@@ -11,7 +11,7 @@
 
 \begin{document}
 
-\def\milestoneName{raw image archiving for data from CCOB device}
+\def\milestoneName{Small Scale CCOB Data Access}
 \def\milestoneId{503-8b}
 \def\product{Archiving}
 
@@ -42,11 +42,12 @@ This is the test plan and report for \milestoneId{} (\milestoneName{}), an LSST 
 
 Testing for the raw image from the DAQ to being written to the archive
 service at the LDF\\
-This test activity demonstrates the successful execution of the major
-components of the storing of raw image files from the DAQ to the DBB and
-then visualized through the LSST science platform (LSP). ~ This is at a
-very small scale and it to test the components of a proof of concept
-that they all work together. ~\\[2\baselineskip]It will demonstrate
+This test activity demonstrates the successful execution of the services
+for storing of raw image files from the DAQ to the DBB and then
+visualized through the LSST science platform (LSP). ~ This is at a very
+small scale and it's purpose is to test the components or (POC proof of
+concept) that they all work together. ~\\[2\baselineskip]It will
+demonstrate
 
 \begin{itemize}
 \tightlist
@@ -54,7 +55,7 @@ that they all work together. ~\\[2\baselineskip]It will demonstrate
   Data can be transferred into the lsst data facility (LDF). ~~
 \item
   The raw data images can be ingested by the DBB along with some
-  metadata about the image and providence. ~
+  metadata about the image and provenance. ~
 \item
   The data files ~can then be retrieved by the LSP
 \end{itemize}
@@ -77,14 +78,14 @@ environment at the LDF from various sources. ~It will depend on what DAQ
 system (spectragraph, comcam, lsstcam, CCOB\ldots{} others) as to where
 the data is located originally, and then how it will be sent to NCSA
 (LDF) . ~ ~The tests begin with data somewhere that needs to be stored
-at the archive enviornment at LDF and ingested into the DBB. ~ The
-LDM-503-5 milestone is limited to the raw image archive from a CCOB
-device, not all types of devices and is limited in scope.
-~\\[2\baselineskip]
+at the archive environment at LDF and ingested into the DBB. ~ The
+LDM-503-4 milestone is limited to the raw image archive from a CCOB
+device, specifially the DAQ, not all types of devices are included and
+is limited in scope. ~\\[2\baselineskip]
 
 \subsection{Applicable Documents}\label{applicable-documents}
 
-\citeds{LDM-294} LSST DM Project Management Plan\\
+\citeds{LDM-294} Data Management Organization and Management\\
 \citeds{LDM-503} DM Test Plan\\
 \citeds{LDM-148} Data Management System Design~
 
