@@ -40,32 +40,30 @@ This is the test plan and report for \milestoneId{} (\milestoneName{}), an LSST 
 \subsection{Objectives}
 \label{sect:objectives}
 
-Testing for the raw image from the DAQ to being written to the archive
-service at the LDF\\
-This test activity demonstrates the successful execution of the services
-for storing of raw image files from the DAQ to the DBB and then
-visualized through the LSST science platform (LSP). ~ This is at a very
-small scale and it's purpose is to test the components or (POC proof of
-concept) that they all work together. ~\\[2\baselineskip]It will
-demonstrate
+This test activity will demonstrate the successful execution of the
+major components required to transfer raw image files from the DAQ to
+the DBB and subsequently visualize them via the LSST Science
+Platform(LSP). This is a small scale proof-of-concept test designed to
+demonstrate that the key components can interoperate
+successfully.\\[2\baselineskip]It will specifically demonstrate that:
 
 \begin{itemize}
 \tightlist
 \item
-  Data can be transferred into the lsst data facility (LDF). ~~
+  Data can be transferred into the lsst data facility (LDF)
 \item
-  The raw data images can be ingested by the DBB along with some
-  metadata about the image and provenance. ~
+  The raw data images can be ingested by the DBB along with a subset of
+  image and provenance metadata
 \item
-  The data files ~can then be retrieved by the LSP
+  The data files can then be retrieved/viewed by the LSP
 \end{itemize}
 
 \subsection{Scope}\label{scope}
 
 The overall test plan for the LSST Data Management system is described
-in \citeds{LDM-503}.\\
+in LDM-503\\
 This document specifically refers to the milestone LDM-503-8b, which
-tests the raw image archiving for a CCOB device. ~
+tests the raw image archiving for a CCOB device
 
 
 
@@ -77,17 +75,17 @@ system is responsible for the data being stored into the archive
 environment at the LDF from various sources. ~It will depend on what DAQ
 system (spectragraph, comcam, lsstcam, CCOB\ldots{} others) as to where
 the data is located originally, and then how it will be sent to NCSA
-(LDF) . ~ ~The tests begin with data somewhere that needs to be stored
-at the archive environment at LDF and ingested into the DBB. ~ The
-LDM-503-4 milestone is limited to the raw image archive from a CCOB
-device, specifially the DAQ, not all types of devices are included and
-is limited in scope. ~\\[2\baselineskip]
+(LDF). The tests begin with data somewhere that needs to be stored at
+the archive environment at LDF and ingested into the DBB. The LDM-503-4
+milestone is limited to the raw image archive from a CCOB device,
+specifically the DAQ, not all types of devices are included and is
+limited in scope.\\[2\baselineskip]
 
 \subsection{Applicable Documents}\label{applicable-documents}
 
 \citeds{LDM-294} Data Management Organization and Management\\
 \citeds{LDM-503} DM Test Plan\\
-\citeds{LDM-148} Data Management System Design~
+\citeds{LDM-148} Data Management System Design
 
 
 \subsection{Document Overview}
@@ -122,7 +120,7 @@ The current status of test plan LVV-P10 in Jira is Draft.
 
 \subsection{Verification Environment}
 \label{sect:hwconf}
-  LDF center at NCSA. ~ The archive service or data back bone.~~
+  LDF center at NCSA. The archive service or data back bone.
 
 
   \subsection{Entry Criteria}
@@ -130,8 +128,8 @@ The current status of test plan LVV-P10 in Jira is Draft.
 
 
   \subsection{Exit Criteria}
-  Data is transferred in proper form and can be viewed on LSP after being
-transferred to LDF and ingested into DBB.~~
+  Data are correctly transferred to the LDF and ingested into the DBB, and
+can be subsequently viewed on the LSP.
 
 
 
@@ -166,8 +164,15 @@ The following personnel are involved in this test activity:
   \multicolumn{3}{c}{ Test Cycle {\bf LVV-C8: 503-8b raw image archiving for CCOB cycle }} \\\hline
   {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} \\\toprule
     \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} 
-    & Not Executed & Need to have the CCOB raw data files pinpointed to be the ones that is
-wanted to be placed in the DBB at NCSA.~~
+    & Not Executed & All files from the CCOB are to be transferred to NCSA. ~ A directory of
+where the CCOB files are stored is required so that the directory can be
+monitored for when new files are written, they can be transferred. ~ ~At
+the first iteration, a human will point out where the files are, and
+begin the execution of the ``rsync'' process to bring all the files to
+the LDF. ~ ~This is so that the files can be inspected by scientists to
+ensure that all the files and data have been transferred. ~ ~ This test
+will be run with humans involved, and then will be run as a integrated
+test of the whole infrastructure.~~
 
     \\\hline
 
@@ -209,24 +214,23 @@ process. ~
 
 
   \subsubsection{Software Version/Baseline}
-    The DBB version is 1.0, and can be found in the github repository when
-it has been fully developed. ~ The current DBB is a script for scraping
-data from the header file and getting the file name and the metadata
-required along with providence. ~ At the time of this writing, the DBB
-use cases and requirements are just being written. ~ ~The database
-component is Oracle and the ingest file systems and output file systems
-for DBB are in GPFS at the LDF.~~
+    The DBB version used in this campaign is 1.0, and can be found in the
+github repository when it has been fully developed. ~ The current DBB is
+a script for scraping data from the header file and getting the file
+name and the metadata required along with provenence. ~ At the time of
+this writing, the DBB use cases and requirements are just being written.
+~ ~The database component is Oracle and the ingest file systems and
+output file systems for DBB are in GPFS at the LDF. ~
 
 
   \subsubsection{Configuration}
     The configuration for this test is the data is located in a file system
-somewhere. ~It is transferred to NCSA into a the LSST GPFS file system.
-~ Files that are needed in the DBB are moved to the DBB ingest file
-system. ~ the data backbone gathers the info from the headers and file
-name. ~it inserts rows into the DBB consolidated DB environment and
+somewhere. ~It is transferred to LSST GPFS file system at LDF. Files
+that are needed in the DBB are moved to the DBB ingest file system. The
+data backbone gathers the necessary information from the headers and
+file name. It inserts rows into the DBB consolidated DB environment and
 moves the file to the DBB file systems that are used by the LSP to once
-again find the raw image file to be viewed/displayed for further
-analysis. ~
+again find the raw image file to be inspected for further analysis. ~
 
 
   \subsubsection{Test Cases in LVV-C8 Test Cycle}
@@ -242,10 +246,11 @@ test case in Jira.
 \begin{itemize}
 \tightlist
 \item
-  The successful integration of the Pathfinder components with the CCOB;
+  The successful integration of the DAQ archiver components with the
+  CCOB
 \item
   That the file can then be ingested into the DBB and be retrieved for
-  further analysis;
+  further analysis
 \end{itemize}
 
 
@@ -255,8 +260,15 @@ test case in Jira.
 
     Execution status: {\bf Not Executed }
 
-    Final comment:\\Need to have the CCOB raw data files pinpointed to be the ones that is
-wanted to be placed in the DBB at NCSA.~~
+    Final comment:\\All files from the CCOB are to be transferred to NCSA. ~ A directory of
+where the CCOB files are stored is required so that the directory can be
+monitored for when new files are written, they can be transferred. ~ ~At
+the first iteration, a human will point out where the files are, and
+begin the execution of the ``rsync'' process to bring all the files to
+the LDF. ~ ~This is so that the files can be inspected by scientists to
+ensure that all the files and data have been transferred. ~ ~ This test
+will be run with humans involved, and then will be run as a integrated
+test of the whole infrastructure.~~
 
 
 
@@ -298,7 +310,7 @@ data is then transferred to NCSA.~ ~
 
       \begin{minipage}[t]{13cm}{\footnotesize
       Move the data from the transferred directory into the DBB foreign file
-ingest file system. ~\\[2\baselineskip]
+ingest file system. ~
 
       \vspace{\dp0}
       } \end{minipage} \\
@@ -387,7 +399,9 @@ originally somewhere else such as slac
       5 & Description &
 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      Have data inspected by scientist for managing that all data was
+transferred.~ ~
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
@@ -395,7 +409,9 @@ originally somewhere else such as slac
       & Expected Result & 
 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      a specific Okay to move forward; or something is
+broke.\\[2\baselineskip]
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
