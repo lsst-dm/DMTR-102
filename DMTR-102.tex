@@ -166,15 +166,7 @@ The following personnel are involved in this test activity:
   \multicolumn{3}{c}{ Test Cycle {\bf LVV-C8: 503-8b raw image archiving for CCOB cycle }} \\\hline
   {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} \\\toprule
     \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} 
-    & Not Executed & All files from the CCOB are to be transferred to NCSA. ~ A directory of
-where the CCOB files are stored is required so that the directory can be
-monitored for when new files are written, they can be transferred. ~ ~At
-the first iteration, a human will point out where the files are, and
-begin the execution of the ``rsync'' process to bring all the files to
-the LDF. ~ ~This is so that the files can be inspected by scientists to
-ensure that all the files and data have been transferred. ~ ~ This test
-will be run with humans involved, and then will be run as a integrated
-test of the whole infrastructure.~~
+    & Not Executed & 
 
     \\\hline
 
@@ -212,7 +204,7 @@ butler to be displayed for further use. ~ This should be tested with a
 human involved at first for moving the data and making sure all the
 pieces work. ~ It should also be tested for when things are working more
 as a service, and without a human involved for an automatic data archive
-process. ~
+process.\\[2\baselineskip]
 
 
   \subsubsection{Software Version/Baseline}
@@ -232,7 +224,16 @@ that are needed in the DBB are moved to the DBB ingest file system. The
 data backbone gathers the necessary information from the headers and
 file name. It inserts rows into the DBB consolidated DB environment and
 moves the file to the DBB file systems that are used by the LSP to once
-again find the raw image file to be inspected for further analysis. ~
+again find the raw image file to be inspected for further analysis.
+~\\[2\baselineskip]All files from the CCOB are to be transferred to
+NCSA. ~ A directory of where the CCOB files are stored is required so
+that the directory can be monitored for when new files are written, they
+can be transferred. ~ ~At the first iteration, a human will point out
+where the files are, and begin the execution of the ``rsync'' process to
+bring all the files to the LDF. ~ ~This is so that the files can be
+inspected by scientists to ensure that all the files and data have been
+transferred. ~ ~ This test will be run with humans involved, and then
+will be run as a integrated test of the whole infrastructure. ~
 
 
   \subsubsection{Test Cases in LVV-C8 Test Cycle}
@@ -262,15 +263,7 @@ test case in Jira.
 
     Execution status: {\bf Not Executed }
 
-    Final comment:\\All files from the CCOB are to be transferred to NCSA. ~ A directory of
-where the CCOB files are stored is required so that the directory can be
-monitored for when new files are written, they can be transferred. ~ ~At
-the first iteration, a human will point out where the files are, and
-begin the execution of the ``rsync'' process to bring all the files to
-the LDF. ~ ~This is so that the files can be inspected by scientists to
-ensure that all the files and data have been transferred. ~ ~ This test
-will be run with humans involved, and then will be run as a integrated
-test of the whole infrastructure.~~
+    Final comment:\\
 
 
 
