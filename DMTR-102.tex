@@ -12,7 +12,7 @@
 \begin{document}
 
 \def\milestoneName{Small Scale CCOB Data Access}
-\def\milestoneId{503-8b}
+\def\milestoneId{LDM-503-8b}
 \def\product{Archiving}
 
 \setDocCompact{true}
@@ -27,7 +27,7 @@
 
 
 \setDocAbstract{
-This is the test plan and report for \milestoneId{} (\milestoneName{}), an LSST level 2 milestone pertaining to the \product{} component provided by the Data Management Subsystem.
+This is the test plan and report for \milestoneId{} (\milestoneName{}), an LSST level 2 milestone pertaining to the Data Management Subsystem.
 }
 
 
@@ -61,7 +61,7 @@ successfully.\\[2\baselineskip]It will specifically demonstrate that:
 \subsection{Scope}\label{scope}
 
 The overall test plan for the LSST Data Management system is described
-in LDM-503\\
+in \citeds{LDM-503}\\
 This document specifically refers to the milestone LDM-503-8b, which
 tests the raw image archiving for a CCOB device
 
@@ -97,17 +97,15 @@ This document was generated from Jira, obtaining the relevant information from t
   \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C8}{LVV-C8}
 ).
 
-%The following general sections are completed before the start of the test activity.
-
 Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}), the applicable documentation, and explains how this document is organized.
 Section \ref{sect:configuration}  describes the configuration used for this test.
-Section \ref{sect:personnel} lists all the individuals involved and describes their roles.
+Section \ref{sect:personnel} describes the necessary roles and lists the individuals assigned to them.
 %Section \ref{sect:plannedtestactivities} provides the list of planned test cycles and test cases, including all relevant information that fully describes the test campaign.
 
 Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary}, an overall assessment statement and suggestions for possible improvements.
 Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
 
-The current status of test plan LVV-P10 in Jira is Draft.
+The current status of test plan LVV-P10 in Jira is Approved.
 
 \subsection{References}
 \label{sect:references}
@@ -147,7 +145,7 @@ The following personnel are involved in this test activity:
   \item LVV-C8 owner: 
     Undefined
   \begin{itemize}
-    \item Test case LVV-T284 tester: Michelle Butler
+    \item Test case \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} tester: Michelle Butler
   \end{itemize}
 \end{itemize}
 \item Additional Test Personnel involved: None
@@ -161,13 +159,14 @@ The following personnel are involved in this test activity:
 \subsection{Summary}
 \label{sect:summarytable}
 
-\begin{longtable} {p{0.2\textwidth}p{0.2\textwidth}p{0.6\textwidth}}
+\begin{longtable}{p{0.12\textwidth}p{0.2\textwidth}p{0.56\textwidth}p{0.12\textwidth}}
 \toprule
-  \multicolumn{3}{c}{ Test Cycle {\bf LVV-C8: 503-8b raw image archiving for CCOB cycle }} \\\hline
-  {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} \\\toprule
+  \multicolumn{3}{c}{ Test Cycle {\bf LVV-C8: 503-8b raw image archiving for CCOB cycle
+ }} \\\hline
+  {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} & {\bf \footnotesize issues} \\\toprule
     \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} 
     & Not Executed & 
-
+ &
     \\\hline
 
 \caption{Test Results Summary}
@@ -191,9 +190,11 @@ Not yet available.
 
   \subsection{Test Cycle LVV-C8 }
 
-Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C8}{503-8b raw image archiving for CCOB cycle}} in Jira.
+Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C8}{503-8b raw image archiving for CCOB cycle
+}} in Jira.
 
-  503-8b raw image archiving for CCOB cycle\\
+  503-8b raw image archiving for CCOB cycle
+\\
   Status: Not Executed
 
   Test cycle for the raw image archiving of data from a CCOB device. ~This
@@ -299,6 +300,7 @@ data is then transferred to NCSA.~ ~
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
+
       & Status          & Not Executed \\ \hline
 
       2 & Description &
@@ -328,6 +330,7 @@ ingest area.~ ~~
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
+
 
       & Status          & Not Executed \\ \hline
 
@@ -360,6 +363,7 @@ LSP to find the CCOB raw image.~~
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
+
       & Status          & Not Executed \\ \hline
 
       4 & Description &
@@ -389,6 +393,7 @@ originally somewhere else such as slac
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
+
       & Status          & Not Executed \\ \hline
 
       5 & Description &
@@ -417,6 +422,7 @@ broke.\\[2\baselineskip]
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
+
 
       & Status          & Not Executed \\ \hline
 
