@@ -1,39 +1,35 @@
-\documentclass[DM,lsstdraft,STR,toc]{lsstdoc}
+\documentclass[DM,STR,toc]{lsstdoc}
 \usepackage{geometry}
 \usepackage{longtable,booktabs}
+\usepackage{enumitem}
+\usepackage{arydshln}
 
 \input meta.tex
 
+\providecommand{\tightlist}{
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 \begin{document}
 
-\def\milestoneName{Raw Image Archiving}
+\def\milestoneName{Small Scale CCOB Data Access}
 \def\milestoneId{LDM-503-8b}
-\def\product{LSST Raw Image Archiving System}
+\def\product{Archiving}
 
 \setDocCompact{true}
 
 \title[\milestoneId{}~Test Report]{\milestoneId{} (\milestoneName{})~Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\setDocDate{\vcsdate}
+\setDocDate{2019-02-04}
 \setDocUpstreamLocation{\url{https://github.com/lsst/lsst-texmf/examples}}
-\author{% `git log --pretty=%an | sort --key=2 | uniq` ?
-  Michelle Butler
-}
+\author{ Michelle Butler }
 
-% Most recent last
-\setDocChangeRecord{
-\addtohist{}{2018-10-31}{Test plan Update}{Butler, Comoretto}
-\addtohist{}{2018-10-10}{Initial version.}{Butler, Comoretto}
-}
-
-\setDocCurator{Michelle Butler}
-\setDocUpstreamLocation{\url{https://github.com/lsst-dm/\lsstDocType-\lsstDocNum}}
-\setDocUpstreamVersion{\vcsrevision}
+\input history_and_info.tex
 
 
 \setDocAbstract{
-This is the test plan and report for \milestoneId{} (\milestoneName{}), an LSST DM level 1 milestone pertaining to the \product{}.
+This is the test plan and report for \milestoneId{} (\milestoneName{}), an LSST level 2 milestone pertaining to the Data Management Subsystem.
 }
+
 
 \maketitle
 
@@ -44,183 +40,394 @@ This is the test plan and report for \milestoneId{} (\milestoneName{}), an LSST 
 \subsection{Objectives}
 \label{sect:objectives}
 
-Testing for the raw image from the DAQ to being written to the archive service at the LDF
-This test activity demonstrates the successful execution of the major components of the storing of raw image files from the DAQ to the DBB and then visualized through the LSST science platform (LSP).   This is at a very small scale and it to test the components of a proof of concept that they all work together.  
+This test activity will demonstrate the successful execution of the
+major components required to transfer raw image files from the DAQ to
+the DBB and subsequently visualize them via the LSST Science
+Platform(LSP). This is a small scale proof-of-concept test designed to
+demonstrate that the key components can interoperate
+successfully.\\[2\baselineskip]It will specifically demonstrate that:
 
-It will demonstrate
 \begin{itemize}
-\item Data can be transferred into the lsst data facility (LDF).   
-\item The raw data images can be ingested by the DBB along with some metadata about the image and providence.  
-\item The data files  can then be retrieved by the LSP
+\tightlist
+\item
+  Data can be transferred into the lsst data facility (LDF)
+\item
+  The raw data images can be ingested by the DBB along with a subset of
+  image and provenance metadata
+\item
+  The data files can then be retrieved/viewed by the LSP
 \end{itemize}
 
-\subsection{Scope}
-\label{sect:scope}
+\subsection{Scope}\label{scope}
 
-The overall test plan for the LSST Data Management system is described in LDM-503.
-This document specifically refers to the milestone LDM-503-8b, which tests the raw image archiving for a CCOB device.  
+The overall test plan for the LSST Data Management system is described
+in \citeds{LDM-503}\\
+This document specifically refers to the milestone LDM-503-8b, which
+tests the raw image archiving for a CCOB device
+
+
 
 \subsection{System Overview}
 \label{sect:systemoverview}
 
-The raw image archiving system that is part of the LSST Data Management system is responsible for the data being stored into the archive environment at the LDF from various sources.  It will depend on what DAQ system (spectragraph, comcam, lsstcam, CCOB... others) as to where the data is located originally, and then how it will be sent to NCSA (LDF) .    The tests begin with data somewhere that needs to be stored at the archive enviornment at LDF and ingested into the DBB.   The LDM-503-5 milestone is limited to the raw image archive from a CCOB device, not all types of devices and is limited in scope.  
+The raw image archiving system that is part of the LSST Data Management
+system is responsible for the data being stored into the archive
+environment at the LDF from various sources. ~It will depend on what DAQ
+system (spectragraph, comcam, lsstcam, CCOB\ldots{} others) as to where
+the data is located originally, and then how it will be sent to NCSA
+(LDF). The tests begin with data somewhere that needs to be stored at
+the archive environment at LDF and ingested into the DBB. The LDM-503-4
+milestone is limited to the raw image archive from a CCOB device,
+specifically the DAQ, not all types of devices are included and is
+limited in scope.\\[2\baselineskip]
 
-\subsection{Applicable Documents}
-\label{sect:appdocs}
-\addtocounter{table}{-1}
+\subsection{Applicable Documents}\label{applicable-documents}
 
-\begin{tabular}[htb]{l l}
-\citeds{LDM-294} & LSST DM Project Management Plan\\
-\citeds{LDM-503} & DM Test Plan\\
-\citeds{LDM-538} & DM Raw Image Archiving Service Test Specification \\
-\end{tabular}
+\citeds{LDM-294} Data Management Organization and Management\\
+\citeds{LDM-503} DM Test Plan\\
+\citeds{LDM-148} Data Management System Design
 
-The information contained in this document is autogenerated from Jira.
-The following Jira test plan and test cycle(s) are used to collect
-such information:
-
-\begin{itemize}
-\item Test Plan: \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P10}{LVV-P10} 503-8b raw image archiving for data from CCOB device 
-\item Test Cycle: \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C8}{LVV-C8} 503-8b raw image archiving for CCOB cycle
-\end{itemize}
-
- 
-\subsection{References}
-\label{sect:references}
-
-\renewcommand{\refname}{}
-\bibliography{lsst,refs,books,refs_ads}
 
 \subsection{Document Overview}
 \label{sect:docoverview}
 
-The following planning sections are completed before the start of the test activity.
-Section \ref{sect:configuration} of this document provides details of the \product{} baseline used for this test, including relevant hardware and software configurations.
-Section \ref{sect:personnel} lists the individuals involved in performing the tests.
-Section \ref{sect:plannedtestactivities} provides a descriptive list of planned test cases.
-Once the above sections are completed, this document can be reviewd in order to ensure that the test activity can start.
+This document was generated from Jira, obtaining the relevant information from the 
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testPlan/LVV-P10}{LVV-P10}
+~Jira Test Plan and related Test Cycles (
+  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C8}{LVV-C8}
+).
 
-Section \ref{sect:testresults} is filled after the test activity is completed. 
-Its includes  an overview of the resulta in \ref{sect:overview}
-while \ref{sect:detailedtestresults} provides more detailed results from each individual test case.
+Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}), the applicable documentation, and explains how this document is organized.
+Section \ref{sect:configuration}  describes the configuration used for this test.
+Section \ref{sect:personnel} describes the necessary roles and lists the individuals assigned to them.
+%Section \ref{sect:plannedtestactivities} provides the list of planned test cycles and test cases, including all relevant information that fully describes the test campaign.
 
+Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary}, an overall assessment statement and suggestions for possible improvements.
+Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
+
+The current status of test plan LVV-P10 in Jira is Approved.
+
+\subsection{References}
+\label{sect:references}
+\renewcommand{\refname}{}
+\bibliography{lsst,refs,books,refs_ads}
 \section{Test Configuration}
 \label{sect:configuration}
 
-The configuration for this test is the data is located in a file system somewhere.  It is transferred to NCSA into a the LSST GPFS file system.   Files that are needed in the DBB are moved to the DBB ingest file system.   the data backbone gathers the info from the headers and file name.  it inserts rows into the DBB consolidated DB environment and moves the file to the DBB file systems that are used by the LSP to once again find the raw image file to be viewed/displayed for further analysis.  
+\subsection{Data Collection}
 
-\subsection{Hardware}
+  Observing is not required for this test campaign.
+
+\subsection{Verification Environment}
 \label{sect:hwconf}
+  LDF center at NCSA. The archive service or data back bone.
 
-LDF center at NCSA.   The archive service or data back bone.
 
-\subsection{Software}
-\label{sect:swconf}
+  \subsection{Entry Criteria}
+  Data that needs to be stored from a CCOB or DAQ
 
-The DBB version is 1.0, and can be found in the github repository when it has been fully developed.   The current DBB is a script for scraping data from the header file and getting the file name and the metadata required along with providence.   At the time of this writing, the DBB use cases and requirements are just being written.    The database component is Oracle and the ingest file systems and output file systems for DBB are in GPFS at the LDF.  
 
-\subsection{Entry Criteria}
+  \subsection{Exit Criteria}
+  Data are correctly transferred to the LDF and ingested into the DBB, and
+can be subsequently viewed on the LSP.
 
-Data that needs to be stored from a CCOB or DAQ.
-
-\subsection{Exit Criteria}
-
-Data is transferred in proper form and can be viewed on LSP after being transferred to LDF and ingested into DBB.  
 
 
 \section{Personnel}
 \label{sect:personnel}
 
-Following personnel is involved in the test activity:
+The following personnel are involved in this test activity:
 
 \begin{itemize}
-\item Test Plan (LVV-P10) Owner: Michelle Butler
-\item Test Cycle (LVV-C8) Owner: Unassigned
-\item LVV-T284 Tester: Michelle Butler
-\item Additional Test Personel involved: None 
+\item Test Plan (LVV-P10) owner: Michelle Butler
+\item Test Cycles:
+\begin{itemize}
+  \item LVV-C8 owner: 
+    Undefined
+  \begin{itemize}
+    \item Test case \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} tester: Michelle Butler
+  \end{itemize}
+\end{itemize}
+\item Additional Test Personnel involved: None
 \end{itemize}
 
 \newpage
 
+\section{Overview of the Test Results}
+\label{sect:overview}
 
-\section{Planned Test Activities}
-\label{sect:plannedtestactivities}
+\subsection{Summary}
+\label{sect:summarytable}
 
-\subsection{Test Cycle LVV-C8}
+\begin{longtable}{p{0.12\textwidth}p{0.2\textwidth}p{0.56\textwidth}p{0.12\textwidth}}
+\toprule
+  \multicolumn{3}{c}{ Test Cycle {\bf LVV-C8: 503-8b raw image archiving for CCOB cycle
+ }} \\\hline
+  {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} & {\bf \footnotesize issues} \\\toprule
+    \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} 
+    & Not Executed & 
+ &
+    \\\hline
 
-Test cycle for the raw image archiving of data from a CCOB device.  This data needs to be stored at the LDF and ingested so that it can be looked at by scientists.   The data needs to be transferred to the LDF and then ingested into the archive service so that it can be retrieved through a butler to be displayed for further use.   This should be tested with a human involved at first for moving the data and making sure all the pieces work.   It should also be tested for when things are working more as a service, and without a human involved for an automatic data archive process.   
+\caption{Test Results Summary}
+\label{table:summary}
+\end{longtable}
 
-\subsubsection{LVV-T284: Writing data from CCOB to the DBB for further data processing}
+\subsection{Overall Assessment}
+\label{sect:overallassessment}
 
-This test will check:
-The successful integration of the Pathfinder components with the CCOB;
-That the file can then be ingested into the DBB and be retrieved for further analysis;
+Not yet available.
 
-    \begin{longtable}[]{p{1.3cm}p{2cm}p{13cm}}
-    %\toprule
-    Step & \multicolumn{2}{@{}l}{Description} \\ \toprule
-    \endhead
+\subsection{Recommended Improvements}
+\label{sect:recommendations}
 
-            \multirow{1}{*}{ 1 } &  &
-            \begin{minipage}[t]{13cm}{\footnotesize
-            CCOB device directs a human to where a file is wanted to be stored in
-the DBB
+Not yet available.
 
-            \vspace{\dp0}
-            } \end{minipage} \\ \cline{2-3}
+\newpage
+\section{Detailed Test Results}
+\label{sect:detailedtestresults}
 
-            \multirow{1}{*}{ 2 } &  &
-            \begin{minipage}[t]{13cm}{\footnotesize
-            Move the data from the transferred directory into the DBB foreign file ingest file system.
 
-            \vspace{\dp0}
-            } \end{minipage} \\ \cline{2-3}
+  \subsection{Test Cycle LVV-C8 }
 
-            \multirow{1}{*}{ 3 } &  &
-            \begin{minipage}[t]{13cm}{\footnotesize
-            The DBB is notified of a new file being in the ingest area, and the DBB ingest is run manually to ingest the CCOB file.
+Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C8}{503-8b raw image archiving for CCOB cycle
+}} in Jira.
 
-            \vspace{\dp0}
-            } \end{minipage} \\ \cline{2-3}
+  503-8b raw image archiving for CCOB cycle
+\\
+  Status: Not Executed
 
-            \multirow{1}{*}{ 4 } &  &
-            \begin{minipage}[t]{13cm}{\footnotesize
-            The LSP can review and use the CCOB raw data file that was stored originally somewhere else such as slac
+  Test cycle for the raw image archiving of data from a CCOB device. ~This
+data needs to be stored at the LDF and ingested so that it can be looked
+at by scientists. ~ The data needs to be transferred to the LDF and then
+ingested into the archive service so that it can be retrieved through a
+butler to be displayed for further use. ~ This should be tested with a
+human involved at first for moving the data and making sure all the
+pieces work. ~ It should also be tested for when things are working more
+as a service, and without a human involved for an automatic data archive
+process.\\[2\baselineskip]
 
-            \vspace{\dp0}
-            } \end{minipage} \\ \cline{2-3}
 
-        \\ \midrule
+  \subsubsection{Software Version/Baseline}
+    The DBB version used in this campaign is 1.0, and can be found in the
+github repository when it has been fully developed. ~ The current DBB is
+a script for scraping data from the header file and getting the file
+name and the metadata required along with provenence. ~ At the time of
+this writing, the DBB use cases and requirements are just being written.
+~ ~The database component is Oracle and the ingest file systems and
+output file systems for DBB are in GPFS at the LDF. ~
+
+
+  \subsubsection{Configuration}
+    The configuration for this test is the data is located in a file system
+somewhere. ~It is transferred to LSST GPFS file system at LDF. Files
+that are needed in the DBB are moved to the DBB ingest file system. The
+data backbone gathers the necessary information from the headers and
+file name. It inserts rows into the DBB consolidated DB environment and
+moves the file to the DBB file systems that are used by the LSP to once
+again find the raw image file to be inspected for further analysis.
+~\\[2\baselineskip]All files from the CCOB are to be transferred to
+NCSA. ~ A directory of where the CCOB files are stored is required so
+that the directory can be monitored for when new files are written, they
+can be transferred. ~ ~At the first iteration, a human will point out
+where the files are, and begin the execution of the ``rsync'' process to
+bring all the files to the LDF. ~ ~This is so that the files can be
+inspected by scientists to ensure that all the files and data have been
+transferred. ~ ~ This test will be run with humans involved, and then
+will be run as a integrated test of the whole infrastructure. ~
+
+
+  \subsubsection{Test Cases in LVV-C8 Test Cycle}
+
+
+    \paragraph{Test Case LVV-T284 }\mbox{}\\
+
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{\textit{ LVV-T284 } }
+test case in Jira.
+
+    This test will check:
+
+\begin{itemize}
+\tightlist
+\item
+  The successful integration of the DAQ archiver components with the
+  CCOB
+\item
+  That the file can then be ingested into the DBB and be retrieved for
+  further analysis
+\end{itemize}
+
+
+    {\bf Preconditions}:\\
+    None.
+
+
+    Execution status: {\bf Not Executed }
+
+    Final comment:\\
+
+
+
+    Detailed step results:
+
+    \begin{longtable}{p{1cm}p{2cm}p{13cm}}
+    \hline
+    {Step} & \multicolumn{2}{c}{Description, Results and Status}\\ \hline
+      1 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      CCOB device directs a human to where a raw file is wanted to be stored
+in the DBB
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      A file with a unique file name is in a file system somewhere, and the
+data is then transferred to NCSA.~ ~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
+      2 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Move the data from the transferred directory into the DBB foreign file
+ingest file system. ~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      A command is executed by a human with a file name and path to the file
+wanted to be stored in the DBB.~ The file is transferred to NCSA's DBB
+ingest area.~ ~~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
+      3 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      The DBB is notified of a new file being in the ingest area, and the DBB
+ingest is run manually to ingest the CCOB file.~ ~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      The DBB puts the resulting file into the DBB file systems depending on
+what type of file it is. ~The DB is updated with metadata and providence
+of the file to be kept. ~ The resulting file system is queryable by the
+LSP to find the CCOB raw image.~~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
+      4 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      The LSP can review and use the CCOB raw data file that was stored
+originally somewhere else such as slac
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      LSP has the ability to find the file and view/use it.
+~\\[2\baselineskip]
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
+      5 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Have data inspected by scientist for managing that all data was
+transferred.~ ~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      a specific Okay to move forward; or something is
+broke.\\[2\baselineskip]
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Not Executed \\ \hline
+
     \end{longtable}
 
 
-
-\newpage
-
-\section{Test Results}
-\label{sect:testresults}
-
-\subsection{Overview of the Test Results}
-\label{sect:overview}
-
-\subsubsection{Summary Table}
-\label{sect:summarytable}
-
-
-\begin{longtable} {|p{0.2\textwidth}|p{0.2\textwidth}|p{0.6\textwidth}|}
-\hline
-{\bf TEST CASE ID} & {\bf PASS/FAIL} & {\bf COMMENTS} \\\hline
-LVV-T284 & Not Run & \\\hline
-\end{longtable}
-
-\subsubsection{Overall Assessment}
-\label{sect:overallassessment}
-
-
-\subsubsection{Recommended Improvements}
-\label{sect:recommendations}
-
-\subsection{Detailed Test Results}
-\label{sect:detailedtestresults}
-
+\input{appendix.tex}
 \end{document}
