@@ -147,9 +147,9 @@ The following personnel are involved in this test activity:
 \item Test Cycles:
 \begin{itemize}
   \item LVV-C8 owner: 
-    Undefined
+    Michelle Butler
   \begin{itemize}
-    \item Test case \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} tester: Michelle Butler
+    \item Test case \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} tester: Michelle Gower
   \end{itemize}
 \end{itemize}
 \item Additional Test Personnel involved: None
@@ -165,10 +165,13 @@ The following personnel are involved in this test activity:
 
 \begin{longtable}{p{0.12\textwidth}p{0.2\textwidth}p{0.56\textwidth}p{0.12\textwidth}}
 \toprule
+
   \multicolumn{3}{c}{ Test Cycle {\bf LVV-C8: 503-8b raw image archiving for CCOB cycle
  }} \\\hline
+
   {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} & {\bf \footnotesize issues} \\\toprule
-    \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} 
+
+    \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284}
     & Pass & The CCOB data has been approved to be from the AuxTel system data. ~In
 the future when this test is run again, the CCOB data will be from an
 actual optical bench, but for the time being of this test, the AuxTel
@@ -189,12 +192,25 @@ test doesn't include at this point.~~
 \subsection{Overall Assessment}
 \label{sect:overallassessment}
 
-Not yet available.
+The test was successful. ~ This was the first iteration, and each step
+was checked by a human to make sure it executed properly. ~ There isn't
+a DBB at this time either. ~ All data has been stored at the LDF, but
+it's not replicated to other locations which is a DBB requirement. ~ So
+the data was transferred, stored, and viewed at the LDF, but not curated
+and sent to multiple repositories.~~
+
 
 \subsection{Recommended Improvements}
 \label{sect:recommendations}
 
-Not yet available.
+There should be many more iterations of this test and with much more
+automation. ~ The data should automatically be sent to NCSA, ingested
+automatically, ~replicated to mulitple locations as needed, and then
+also be placed into filesystems that can be viewed by the LSP. ~ The DBB
+should include a database to be able to query against to find the images
+that is wanted along with searching for matching metadata. ~\\
+\hspace*{0.333em} ~
+
 
 \newpage
 \section{Detailed Test Results}
@@ -255,7 +271,9 @@ test of the whole infrastructure. ~
   \subsubsection{Test Cases in LVV-C8 Test Cycle}
 
 
-    \paragraph{Test Case LVV-T284 }\mbox{}\\
+    \paragraph{Test Case LVV-T284 - RAS-00-05: (LDM-503-8b) Writing data from CCOB to the DBB for further
+data processing
+ }\mbox{}\\
 
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{\textit{ LVV-T284 } }
 test case in Jira.
@@ -273,7 +291,7 @@ test case in Jira.
 \end{itemize}
 
 
-    {\bf Preconditions}:\\
+    \textbf{ Preconditions}:\\
     None.
 
 
