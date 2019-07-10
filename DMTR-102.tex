@@ -1,4 +1,4 @@
-\documentclass[DM,STR,toc]{lsstdoc}
+\documentclass[DM,lsstdraft,STR,toc]{lsstdoc}
 \usepackage{geometry}
 \usepackage{longtable,booktabs}
 \usepackage{enumitem}
@@ -19,7 +19,7 @@
 
 \title[\milestoneId{}~Test Report]{\milestoneId{} (\milestoneName{})~Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\setDocDate{2019-02-04}
+\setDocDate{\vcsdate}
 \setDocUpstreamLocation{\url{https://github.com/lsst/lsst-texmf/examples}}
 \author{ Michelle Butler }
 
@@ -44,21 +44,23 @@ This test activity will demonstrate the successful execution of the
 major components required to transfer raw image files from the DAQ to
 the DBB and subsequently visualize them via the LSST Science
 Platform(LSP). This is a small scale proof-of-concept test designed to
-demonstrate that the key components can interoperate
-successfully.\\[2\baselineskip]It will specifically demonstrate that:
+demonstrate that the key components can interoperate successfully.\\
+~\\
+It will specifically demonstrate that:
 
 \begin{itemize}
 \tightlist
 \item
   Data can be transferred into the lsst data facility (LDF)
 \item
-  The raw data images can be ingested by the DBB along with a subset of
-  image and provenance metadata
+  The raw data images can be ingested into a Butler (eventually by the
+  DBB along with a subset of image and provenance metadata)
 \item
   The data files can then be retrieved/viewed by the LSP
 \end{itemize}
 
-\subsection{Scope}\label{scope}
+\hypertarget{scope}{%
+\subsection{Scope}\label{scope}}
 
 The overall test plan for the LSST Data Management system is described
 in \citeds{LDM-503}\\
@@ -73,15 +75,17 @@ tests the raw image archiving for a CCOB device
 The raw image archiving system that is part of the LSST Data Management
 system is responsible for the data being stored into the archive
 environment at the LDF from various sources. ~It will depend on what DAQ
-system (spectragraph, comcam, lsstcam, CCOB\ldots{} others) as to where
-the data is located originally, and then how it will be sent to NCSA
-(LDF). The tests begin with data somewhere that needs to be stored at
-the archive environment at LDF and ingested into the DBB. The LDM-503-4
+system (spectragraph, comcam, lsstcam, CCOB... others) as to where the
+data is located originally, and then how it will be sent to NCSA (LDF).
+The tests begin with data somewhere that needs to be stored at the
+archive environment at LDF and ingested into the DBB. The LDM-503-4
 milestone is limited to the raw image archive from a CCOB device,
 specifically the DAQ, not all types of devices are included and is
-limited in scope.\\[2\baselineskip]
+limited in scope.\\
+~\\
 
-\subsection{Applicable Documents}\label{applicable-documents}
+\hypertarget{applicable-documents}{%
+\subsection{Applicable Documents}\label{applicable-documents}}
 
 \citeds{LDM-294} Data Management Organization and Management\\
 \citeds{LDM-503} DM Test Plan\\
@@ -105,7 +109,7 @@ Section \ref{sect:personnel} describes the necessary roles and lists the individ
 Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary}, an overall assessment statement and suggestions for possible improvements.
 Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
 
-The current status of test plan LVV-P10 in Jira is Approved.
+The current status of test plan LVV-P10 in Jira is Completed.
 
 \subsection{References}
 \label{sect:references}
@@ -143,9 +147,9 @@ The following personnel are involved in this test activity:
 \item Test Cycles:
 \begin{itemize}
   \item LVV-C8 owner: 
-    Undefined
+    Michelle Butler
   \begin{itemize}
-    \item Test case \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} tester: Michelle Butler
+    \item Test case \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} tester: Michelle Gower
   \end{itemize}
 \end{itemize}
 \item Additional Test Personnel involved: None
@@ -161,11 +165,23 @@ The following personnel are involved in this test activity:
 
 \begin{longtable}{p{0.12\textwidth}p{0.2\textwidth}p{0.56\textwidth}p{0.12\textwidth}}
 \toprule
+
   \multicolumn{3}{c}{ Test Cycle {\bf LVV-C8: 503-8b raw image archiving for CCOB cycle
  }} \\\hline
+
   {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} & {\bf \footnotesize issues} \\\toprule
-    \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284} 
-    & Not Executed & 
+
+    \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{LVV-T284}
+    & Pass & The CCOB data has been approved to be from the AuxTel system data. ~In
+the future when this test is run again, the CCOB data will be from an
+actual optical bench, but for the time being of this test, the AuxTel
+was not connected to an optical bench, but was approved by data
+management leadership team. ~A step was also skipped in that the Tucson
+scientist didn't approve of the data before it was placed into the
+butler/G2 repository because the data was wanted to be viewed by the
+scientists AFTER it was ingested not before. ~ ~There was no CCOB or
+DBB. ~ The DBB software is for data tracking and oracle DB which this
+test doesn't include at this point.~~
  &
     \\\hline
 
@@ -176,12 +192,25 @@ The following personnel are involved in this test activity:
 \subsection{Overall Assessment}
 \label{sect:overallassessment}
 
-Not yet available.
+The test was successful. ~ This was the first iteration, and each step
+was checked by a human to make sure it executed properly. ~ There isn't
+a DBB at this time either. ~ All data has been stored at the LDF, but
+it's not replicated to other locations which is a DBB requirement. ~ So
+the data was transferred, stored, and viewed at the LDF, but not curated
+and sent to multiple repositories.~~
+
 
 \subsection{Recommended Improvements}
 \label{sect:recommendations}
 
-Not yet available.
+There should be many more iterations of this test and with much more
+automation. ~ The data should automatically be sent to NCSA, ingested
+automatically, ~replicated to mulitple locations as needed, and then
+also be placed into filesystems that can be viewed by the LSP. ~ The DBB
+should include a database to be able to query against to find the images
+that is wanted along with searching for matching metadata. ~\\
+\hspace*{0.333em} ~
+
 
 \newpage
 \section{Detailed Test Results}
@@ -195,7 +224,7 @@ Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/
 
   503-8b raw image archiving for CCOB cycle
 \\
-  Status: Not Executed
+  Status: Done
 
   Test cycle for the raw image archiving of data from a CCOB device. ~This
 data needs to be stored at the LDF and ingested so that it can be looked
@@ -205,7 +234,8 @@ butler to be displayed for further use. ~ This should be tested with a
 human involved at first for moving the data and making sure all the
 pieces work. ~ It should also be tested for when things are working more
 as a service, and without a human involved for an automatic data archive
-process.\\[2\baselineskip]
+process.\\
+~\\
 
 
   \subsubsection{Software Version/Baseline}
@@ -225,22 +255,25 @@ that are needed in the DBB are moved to the DBB ingest file system. The
 data backbone gathers the necessary information from the headers and
 file name. It inserts rows into the DBB consolidated DB environment and
 moves the file to the DBB file systems that are used by the LSP to once
-again find the raw image file to be inspected for further analysis.
-~\\[2\baselineskip]All files from the CCOB are to be transferred to
-NCSA. ~ A directory of where the CCOB files are stored is required so
-that the directory can be monitored for when new files are written, they
-can be transferred. ~ ~At the first iteration, a human will point out
-where the files are, and begin the execution of the ``rsync'' process to
-bring all the files to the LDF. ~ ~This is so that the files can be
-inspected by scientists to ensure that all the files and data have been
-transferred. ~ ~ This test will be run with humans involved, and then
-will be run as a integrated test of the whole infrastructure. ~
+again find the raw image file to be inspected for further analysis. ~\\
+~\\
+All files from the CCOB are to be transferred to NCSA. ~ A directory of
+where the CCOB files are stored is required so that the directory can be
+monitored for when new files are written, they can be transferred. ~ ~At
+the first iteration, a human will point out where the files are, and
+begin the execution of the "rsync" process to bring all the files to the
+LDF. ~ ~This is so that the files can be inspected by scientists to
+ensure that all the files and data have been transferred. ~ ~ This test
+will be run with humans involved, and then will be run as a integrated
+test of the whole infrastructure. ~
 
 
   \subsubsection{Test Cases in LVV-C8 Test Cycle}
 
 
-    \paragraph{Test Case LVV-T284 }\mbox{}\\
+    \paragraph{Test Case LVV-T284 - RAS-00-05: (LDM-503-8b) Writing data from CCOB to the DBB for further
+data processing
+ }\mbox{}\\
 
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T284}{\textit{ LVV-T284 } }
 test case in Jira.
@@ -258,13 +291,22 @@ test case in Jira.
 \end{itemize}
 
 
-    {\bf Preconditions}:\\
+    \textbf{ Preconditions}:\\
     None.
 
 
-    Execution status: {\bf Not Executed }
+    Execution status: {\bf Pass }
 
-    Final comment:\\
+    Final comment:\\The CCOB data has been approved to be from the AuxTel system data. ~In
+the future when this test is run again, the CCOB data will be from an
+actual optical bench, but for the time being of this test, the AuxTel
+was not connected to an optical bench, but was approved by data
+management leadership team. ~A step was also skipped in that the Tucson
+scientist didn't approve of the data before it was placed into the
+butler/G2 repository because the data was wanted to be viewed by the
+scientists AFTER it was ingested not before. ~ ~There was no CCOB or
+DBB. ~ The DBB software is for data tracking and oracle DB which this
+test doesn't include at this point.~~
 
 
 
@@ -295,13 +337,17 @@ data is then transferred to NCSA.~ ~
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      A image file was created by the AT-archiverin a transfer directory. ~
+The file directory on the AT-archiver is /data/export/2019-06-11. ~ It
+had 1 image file(s) created. ~ ~The image has proper headers generated
+by the header service. ~
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       2 & Description &
 
@@ -326,7 +372,47 @@ ingest area.~ ~~
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      The at-archiver machine has a cron job that executes a rsync command to
+push the data to a data transfer machine or a gateway machine at NCSA. ~
+The single file lands on NCSA's GPFS file system. ~ path is:
+~/lsstdata/offline/teststand/\textless{}auxTel\textgreater{}/\textless{}L1Archiver
+\textbar{} DAQ\textgreater{} ~\\
+~\\
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+
+      & Status          & Pass \\ \hline
+
+      3 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Have data inspected by scientist for managing that all data was
+transferred.~ ~
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      a specific Okay to move forward; or something is broke.\\
+~\\
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      This was not done, and this data is not considered for a release or any
+step needing a scientist to view the file at this time. ~ The LSP is
+being used after the file is ingested to actually view the files. ~ This
+is part of QA and isn't needed for this test.~~
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
@@ -334,7 +420,7 @@ ingest area.~ ~~
 
       & Status          & Not Executed \\ \hline
 
-      3 & Description &
+      4 & Description &
 
       \begin{minipage}[t]{13cm}{\footnotesize
       The DBB is notified of a new file being in the ingest area, and the DBB
@@ -358,15 +444,18 @@ LSP to find the CCOB raw image.~~
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      A system at NCSA has a cron job (lsst-dev03) that executes a script that
+copies the file from the rsync directory to a temporary location and
+ingests them into a Butler/G2 repository.~ ~
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
-      4 & Description &
+      5 & Description &
 
       \begin{minipage}[t]{13cm}{\footnotesize
       The LSP can review and use the CCOB raw data file that was stored
@@ -379,8 +468,8 @@ originally somewhere else such as slac
       & Expected Result & 
 
       \begin{minipage}[t]{13cm}{\footnotesize
-      LSP has the ability to find the file and view/use it.
-~\\[2\baselineskip]
+      LSP has the ability to find the file and view/use it. ~\\
+~\\
 
       \vspace{\dp0}
       } \end{minipage} \\
@@ -388,43 +477,15 @@ originally somewhere else such as slac
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
-
-
-      & Status          & Not Executed \\ \hline
-
-      5 & Description &
-
-      \begin{minipage}[t]{13cm}{\footnotesize
-      Have data inspected by scientist for managing that all data was
-transferred.~ ~
+      After the ButlerG2 ingestion the file is available at:
+/project/production/tmpdataloc/auxTel/storage/2019-06-11/AT\_O\_20190611\_000001-ats-wfs\_ccd.fits
 
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Expected Result & 
 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      a specific Okay to move forward; or something is
-broke.\\[2\baselineskip]
-
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
-
-      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
-      \begin{minipage}[t]{13cm}{\footnotesize
-      
-      \vspace{\dp0}
-      } \end{minipage} \\
-      \\ \cdashline{2-3}
-
-
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
     \end{longtable}
 
